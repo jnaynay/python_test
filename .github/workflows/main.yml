@@ -40,11 +40,11 @@ jobs:
             ${{ steps.get_diff.outputs.pull_request_diff }}
           pull_request_chunk_size: "3500"
           extra_prompt: >-
+            You are an expert code reviewer. Your task is to review the provided code changes in the pull request and provide a detailed analysis. Focus on the following aspects:
             **Summary:**
             _Provide a brief summary of your review and the overall quality of the code._
 
             *ignore .github/workflows/*
-            *ignore this section if the code is not in Python*
 
             **Code Quality:**
 
@@ -63,5 +63,5 @@ jobs:
             **Overall Verdict:**
             _Approved, Needs Changes, or Rejected.
 
-          max_tokens: "300"
+          max_tokens: "500"
           log_level: "DEBUG"
