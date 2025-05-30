@@ -1,15 +1,46 @@
+
+def add_employee(self, name, experience_years, specialist_level, kpi_score):
+        """
+        Adds a new employee, calculates their salary and bonus, and stores their data.
+
+        Args:
+            name (str): The employee's name.
+            experience_years (int): Number of years of experience.
+            specialist_level (str): The specialist level of the employee.
+            kpi_score (float): The employee's KPI score.
+
+        Returns:
+            dict: The complete employee profile, or None if salary calculation fails.
+        """
+        employee_id = self._next_id
+        self._next_id += 1
+
+        # Calculate base salary using the new function
+        base_salary = calculate_simple_salary(experience_years, specialist_level)
+
+        if base_salary is None:
+            print(f"Failed to add {name}: Could not calculate base salary for level '{specialist_level}'.")
+            return None
+
+        # Calculate bonus
+        bonus_amount = calculate_employee_bonus(kpi_score, base_salary)
+
+        employee_profile = {
+            "id": employee_id,
+            "name": name,
+            "experience_years": experience_years,
+            "specialist_level": specialist_level,
+            "calculated_base_salary": base_salary,
+            "kpi_score": kpi_score,
+            "calculated_bonus": bonus_amount,
+            "estimated_total_compensation": estimate_total_compensation(base_salary, bonus_amount)
+        }
+        self.employees[employee_id] = employee_profile
+        print(f"Added employee {name} with ID {employee_id}.")
+        return employee_profile
+    
 def calculate_simple_salary(experience_years, specialist_level):
-    """
-    Calculates a simplified salary based on experience and specialist level.
-
-    Args:
-        experience_years (int): Number of years of experience.
-        specialist_level (str): The specialist level of the employee
-                                (e.g., "Junior", "Mid", "Senior", "Lead").
-
-    Returns:
-        float: The calculated salary, or None if the specialist level is not recognized.
-    """
+    
     base_salary = 30000  # A common base for starting calculations
     salary = base_salary
 
