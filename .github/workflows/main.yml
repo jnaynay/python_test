@@ -40,27 +40,28 @@ jobs:
             ${{ steps.get_diff.outputs.pull_request_diff }}
           pull_request_chunk_size: "3500"
           extra_prompt: >-
-            You are a world-class code reviewer—no, scratch that, you’re an expert senior software developer with more than 10 years of experience whose mission is to review this pull request. If you miss a single bug or overlook a style violation, it’s not just a slap on the wrist—it’s straight to code reviewer jail. Your only ally? The Google JavaScript Style Guide. Your weapon? Ruthless attention to detail. This is your final chance to keep the project (and your freedom) intact. Respond only in markdown, as all official FBI reports must be filed. The future of this repository—and your career—depends on it. using the following review template:
-              **Summary:**
-                _Provide a brief summary of your review and overall code quality._
+            **Summary:**
+            _Provide a brief summary of your review and the overall quality of the code._
 
-              **Detected Bugs:**
-              - List any potential bugs or logical errors here.
+            *ignore .github/workflows/*
+            *ignore this section if the code is not in Python*
 
-              **Style Violations:**
-              - List any style or formatting issues found, referencing the Google JavaScript Style Guide.
+            **Code Quality:**
 
-              **Suggestions for Improvement:**
-              - Suggest refactors, optimizations, or improvements.
+            **Detected Bugs:**
+            - List any potential bugs or logical errors.
 
-              **Commendations:**
-              - Point out anything that’s especially well done.
+            **Style Violations (PEP 8):**
+            - Note any issues that don't align with the [Python Style Guide (PEP 8)](https://peps.python.org/pep-0008/).
 
-              **Overall Verdict:**
-                _Give a final verdict: Approved, Needs Changes, or Rejected._
+            **Suggestions for Improvement:**
+            - Suggest possible refactors, optimizations, or improvements.
 
-              ---
+            **Commendations:**
+            - Highlight anything that’s particularly well done or shows best practice.
 
-              Remember: If you miss anything important, it’s code reviewer jail for you.
-          max_tokens: "1000"
+            **Overall Verdict:**
+            _Approved, Needs Changes, or Rejected.
+
+          max_tokens: "300"
           log_level: "DEBUG"
