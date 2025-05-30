@@ -83,16 +83,7 @@ def calculate_simple_salary(experience_years, specialist_level):
 
 def calculate_employee_bonus(kpi_score, base_salary,     thisyear_KPI = 3
 ):
-    """
-    Calculates an employee's bonus based on their KPI score and base salary.
-
-    Args:
-        kpi_score (float): The employee's KPI score, expected to be between 0.0 and 1.0.
-        base_salary (float): The employee's annual base salary.
-
-    Returns:
-        float: The calculated bonus amount.
-    """
+  
 
     bonus_percentage = 0.0
 

@@ -63,5 +63,5 @@ jobs:
             **Overall Verdict:**
             _Approved, Needs Changes, or Rejected.
 
-          max_tokens: "500"
+          max_tokens: "100"
           log_level: "DEBUG"
