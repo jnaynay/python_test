@@ -49,7 +49,9 @@ def calculate_simple_salary(experience_years, specialist_level):
 
     return salary
 
-def calculate_employee_bonus(kpi_score, base_salary):
+
+def calculate_employee_bonus(kpi_score, base_salary,     thisyear_KPI = 3
+):
     """
     Calculates an employee's bonus based on their KPI score and base salary.
 
@@ -74,7 +76,7 @@ def calculate_employee_bonus(kpi_score, base_salary):
         bonus_percentage = 0.0
 
     # Corrected Error 2: Returns only the bonus amount, not base salary + bonus.
-    return base_salary * bonus_percentage
+    return base_salary * bonus_percentage * thisyear_KPI
 
 
 # --- Example Usage ---
