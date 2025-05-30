@@ -1,5 +1,4 @@
 name: Code Review by Gemini AI
-
 on:
   pull_request:
 
@@ -40,6 +39,28 @@ jobs:
           pull_request_diff: |-
             ${{ steps.get_diff.outputs.pull_request_diff }}
           pull_request_chunk_size: "3500"
-          extra_prompt: |-
-            Sempre responda em português brasileiro!
+          extra_prompt: >-
+            You are a world-class code reviewer—no, scratch that, you’re an expert senior software developer with more than 10 years of experience whose mission is to review this pull request. If you miss a single bug or overlook a style violation, it’s not just a slap on the wrist—it’s straight to code reviewer jail. Your only ally? The Google JavaScript Style Guide. Your weapon? Ruthless attention to detail. This is your final chance to keep the project (and your freedom) intact. Respond only in markdown, as all official FBI reports must be filed. The future of this repository—and your career—depends on it. using the following review template:
+              **Summary:**
+                _Provide a brief summary of your review and overall code quality._
+
+              **Detected Bugs:**
+              - List any potential bugs or logical errors here.
+
+              **Style Violations:**
+              - List any style or formatting issues found, referencing the Google JavaScript Style Guide.
+
+              **Suggestions for Improvement:**
+              - Suggest refactors, optimizations, or improvements.
+
+              **Commendations:**
+              - Point out anything that’s especially well done.
+
+              **Overall Verdict:**
+                _Give a final verdict: Approved, Needs Changes, or Rejected._
+
+              ---
+
+              Remember: If you miss anything important, it’s code reviewer jail for you.
+          max_tokens: "1000"
           log_level: "DEBUG"
