@@ -49,6 +49,40 @@ def calculate_simple_salary(experience_years, specialist_level):
 
     return salary
 
+def calculate_employee_bonus(kpi_score, base_salary):
+    """
+    Calculates an employee's bonus based on their KPI score and base salary.
+
+    Args:
+        kpi_score (float): The employee's KPI score, expected to be between 0.0 and 1.0.
+        base_salary (float): The employee's annual base salary.
+
+    Returns:
+        float: The calculated bonus amount.
+    """
+
+    # Error 1 (Logic Error): The bonus percentage for high performance is less than good performance.
+    # It should be 0.20 for > 0.95 and 0.10 for > 0.8
+    if kpi_score > 0.95:  # High performance bonus
+        bonus_percentage = 0.05  # This is intentionally too low
+    elif kpi_score > 0.8: # Good performance
+        bonus_percentage = 0.15  # This is intentionally higher than the top tier
+    elif kpi_score >= 0.5: # Satisfactory performance, some bonus
+        bonus_percentage = 0.05
+    else:
+        bonus_percentage = 0.0
+
+    # Error 2 (Logic Error): Bonus is added to the base salary instead of being a separate amount.
+    # The function should return *only* the bonus amount.
+    return base_salary + (base_salary * bonus_percentage)
+
+# Example Usage with intentional logic errors:
+# print(calculate_employee_bonus(0.98, 60000)) # Expected: 12000 (0.20 * 60000) but will return 63000 (60000 + 0.05 * 60000)
+# print(calculate_employee_bonus(0.85, 75000)) # Expected: 7500 (0.10 * 75000) but will return 86250 (75000 + 0.15 * 75000)
+# print(calculate_employee_bonus(0.6, 50000))  # Expected: 2500 (0.05 * 50000) but will return 52500 (50000 + 0.05 * 50000)
+# print(calculate_employee_bonus(0.4, 40000))  # Expected: 0 but will return 40000 (40000 + 0.0 * 40000)
+
+
 # --- Example Usage ---
 if __name__ == "__main__":
     print("--- Simple Salary Calculation Examples ---")
